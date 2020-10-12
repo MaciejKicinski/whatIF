@@ -1,13 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.RequestParameters;
 import com.example.demo.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CurrencyController {
@@ -20,16 +18,22 @@ public class CurrencyController {
     }
 
     @GetMapping("/info")
-    public String getCurrencyInfo (){
-        String response = currencyService.getCurrencyTable();
-        System.out.println(response);
-        return "home";
+    public String getCurrencyInfo (Model model){
+        String response = currencyService.getCurrencyByTime("1");
+        model.addAttribute("prize", response);
+        return "pickCurrency";
     }
 
     @GetMapping("/pickCurrency")
-    public String getResult( Model model) {
-        String response = currencyService.getCurrencyTable();
-        model.addAttribute("prize", response);
+    public String getResult() {
+        return "pickCurrency";
+    }
+//2016-01-01T00:00:00
+    @PostMapping ("/historicalTime")
+    public String getHistoricalPriceOpen(@RequestParam String date, Model model) {
+        model.addAttribute("prize", currencyService.getCurrencyByTime(date));
+       // String response = currencyService.getCurrencyByTime();
+       // model.addAttribute("prize", response);
         return "pickCurrency";
     }
 }
