@@ -24,6 +24,20 @@ public class CurrencyController {
         return "pickCurrency";
     }
 
+    @GetMapping("/home")
+    public String getHome(Model model){
+        //String response = currencyService.getCurrencyByTime("1");
+       // model.addAttribute("prize", response);
+        return "home";
+    }
+
+    @GetMapping("/index")
+    public String getIndex(Model model){
+        //String response = currencyService.getCurrencyByTime("1");
+        // model.addAttribute("prize", response);
+        return "index";
+    }
+
     @GetMapping("/pickCurrency")
     public String getResult() {
         return "pickCurrency";
