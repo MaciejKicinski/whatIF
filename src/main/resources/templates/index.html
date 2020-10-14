@@ -8,9 +8,10 @@
 
 </head>
 <body>
-<div class="" style="width:400px">
+<form th:action="@{/historicalTime}" method="post">
+    <div class="" style="width:400px">
     <h3>Date Picker</h3>
-    <input type="text" id="picker" class="form-control">
+    <input type="text" id="picker" class="form-control" th:name="date" th:value="*{date}">
 </div>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -21,9 +22,12 @@
         timepicker: false,
         datepicker: true,
         format: 'Y-m-d',
-        value: '1990-09-29',
+        value: '2016-09-29',
         weeks: true
     })
 </script>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
 </body>
 </html>

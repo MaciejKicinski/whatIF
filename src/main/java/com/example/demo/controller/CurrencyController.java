@@ -18,36 +18,33 @@ public class CurrencyController {
     }
 
     @GetMapping("/info")
-    public String getCurrencyInfo (Model model){
+    public String getCurrencyInfo(Model model) {
         String response = currencyService.getCurrencyByTime("1");
         model.addAttribute("prize", response);
         return "pickCurrency";
     }
 
     @GetMapping("/home")
-    public String getHome(Model model){
+    public String getHome(Model model) {
         //String response = currencyService.getCurrencyByTime("1");
-       // model.addAttribute("prize", response);
+        // model.addAttribute("prize", response);
         return "home";
     }
 
     @GetMapping("/index")
-    public String getIndex(Model model){
+    public String getIndex(Model model) {
         //String response = currencyService.getCurrencyByTime("1");
         // model.addAttribute("prize", response);
         return "index";
     }
 
-    @GetMapping("/pickCurrency")
-    public String getResult() {
-        return "pickCurrency";
-    }
 //2016-01-01T00:00:00
-    @PostMapping ("/historicalTime")
+
+    @PostMapping("/historicalTime")
     public String getHistoricalPriceOpen(@RequestParam String date, Model model) {
         model.addAttribute("prize", currencyService.getCurrencyByTime(date));
-       // String response = currencyService.getCurrencyByTime();
-       // model.addAttribute("prize", response);
+        // String response = currencyService.getCurrencyByTime();
+        // model.addAttribute("prize", response);
         return "pickCurrency";
     }
 }

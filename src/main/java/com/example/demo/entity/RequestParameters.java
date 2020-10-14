@@ -5,10 +5,6 @@ public class RequestParameters {
     private String time_start;
     private int limit = 1;
 
-    public RequestParameters(String time_start) {
-        this.time_start = time_start;
-    }
-
     public String getPeriod_id() {
         return period_id;
     }

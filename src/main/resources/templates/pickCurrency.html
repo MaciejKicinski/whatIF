@@ -14,28 +14,8 @@
 
 <div class="main">
     <div class="container-fluid">
-        <p>Po tyle chodzi BitCoin:</p>
+        <p>Po tyle chodził BitCoin:</p>
         <p th:text="${prize}">...</p>
-        <div class="wall">
-            <div class="window">
-                <div class="content">
-<!--                    <form th:action="@{/historicalTime}" method="post">-->
-<!--                        <div class="form-group">-->
-<!--                            <label for="exampleFormControlTextarea1">Example textarea</label>-->
-<!--                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
-<!--                        </div>-->
-<!--                        <input type="submit" class="btn btn-primary mt-2 mb-4" th:value="Submit">-->
-<!--                    </form>-->
-<!--                    <br/>-->
-
-                    <form th:action="@{/historicalTime}" method="post">
-                    <input type="text" th:name="date" th:value="*{date}" />
-                        <input type="submit" value="Submit" >
-                    </form>
-
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
