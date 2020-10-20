@@ -1,0 +1,10 @@
+body {
+    background-color: #33aaff;
+    background-image: url('../image/backgroundImage.jpg');
+    align-content: center;
+    color: white;
+}
+
+h2{
+    color: #00dd1c;
+}

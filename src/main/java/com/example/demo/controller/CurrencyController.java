@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.RequestParameters;
 import com.example.demo.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,34 +16,19 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/info")
-    public String getCurrencyInfo(Model model) {
-        String response = currencyService.getCurrencyByTime("1");
-        model.addAttribute("prize", response);
-        return "pickCurrency";
-    }
-
-    @GetMapping("/home")
-    public String getHome(Model model) {
-        //String response = currencyService.getCurrencyByTime("1");
-        // model.addAttribute("prize", response);
-        return "home";
-    }
-
     @GetMapping("/index")
     public String getIndex(Model model) {
-        //String response = currencyService.getCurrencyByTime("1");
-        // model.addAttribute("prize", response);
-        return "index";
+        return "pickDate";
     }
 
 //2016-01-01T00:00:00
 
     @PostMapping("/historicalTime")
-    public String getHistoricalPriceOpen(@RequestParam String date, Model model) {
+    public String getHistoricalPriceOpen(@RequestParam String date, @RequestParam String investedMoney, Model model) {
         model.addAttribute("prize", currencyService.getCurrencyByTime(date));
+        model.addAttribute("profit", currencyService.calculateProfit(date, investedMoney));
         // String response = currencyService.getCurrencyByTime();
         // model.addAttribute("prize", response);
-        return "pickCurrency";
+        return "result";
     }
 }
