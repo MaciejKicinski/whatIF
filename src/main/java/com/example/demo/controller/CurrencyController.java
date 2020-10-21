@@ -16,6 +16,11 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
+    @GetMapping("/home")
+    public String getHome(Model model) {
+        return "home";
+    }
+
     @GetMapping("/index")
     public String getIndex(Model model) {
         return "pickDate";

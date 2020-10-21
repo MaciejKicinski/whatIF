@@ -4,31 +4,34 @@
     <meta charset="utf-8">
     <title>Bootstrap</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="jquery.datetimepicker.min.css" rel="stylesheet">
+    <link href="css/jquery.datetimepicker.min.css" rel="stylesheet">
     <link th:href="@{css/style.css}" rel="stylesheet">
 </head>
 <body>
 <form th:action="@{/historicalTime}" method="post">
-    <div>
-        <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney" name="investedMoney">
-        <label><h4>Insert amount of cash you wish invested</h4></label>
-        <h3>Date Picker</h3>
-        <input type="text" id="picker" class="form-control" th:name="date" th:value="*{date}">
+    <div class="image">
+        <div class="context-text">
+            <h3><span>Here type amount of cash</span></h3>
+            <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
+                   name="investedMoney">
+            <h3><span>Choose a day you wish invest money</span></h3>
+            <input type="text" id="picker" class="form-control" th:name="date" th:value="*{date}">
+            <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="js/jquery.datetimepicker.full.min.js"></script>
+            <script>
+                $('#picker').datetimepicker({
+                    timepicker: false,
+                    datepicker: true,
+                    format: 'Y-m-d',
+                    value: '2010-09-29',
+                    weeks: true
+                })
+            </script>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
     </div>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="jquery.datetimepicker.full.min.js"></script>
-    <script>
-        $('#picker').datetimepicker({
-            timepicker: false,
-            datepicker: true,
-            format: 'Y-m-d',
-            value: '2016-09-29',
-            weeks: true
-        })
-    </script>
-    <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 </body>
 </html>
