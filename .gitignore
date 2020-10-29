@@ -12,12 +12,17 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.redcar/
+.sass-cache
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+**.war
+*.rbc
+*.sassc
 
 ### NetBeans ###
 /nbproject/private/
@@ -28,6 +33,28 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+/config/config.yml
+/config/database.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/specifications
+rerun.txt
+pickle-email-*.html
+.zeus.sock
 
 ### VS Code ###
 .vscode/
