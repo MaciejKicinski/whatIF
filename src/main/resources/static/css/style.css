@@ -1,21 +1,6 @@
-
-h3 span {
-background-color: white
+body {
+    background-color: rgb(29, 1, 42);
 }
-
-
-.image {
-    background-image: url("../image/backgroundImage.jpg");
-    background-color: aquamarine;
-    height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-
-
 
 .context-text {
     text-align: center;
@@ -24,4 +9,26 @@ background-color: white
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
+}
+
+form {
+    float: left; /*to clear the floats of inner elements,usefull if you wanna add a border or background image*/
+    width: 300px;
+}
+
+label {
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px; /*or whatever you want the spacing to be*/
+}
+.label-wide {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px; /*or whatever you want the spacing to be*/
+}
+
+input {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px; /*or whatever you want the spacing to be*/
 }
