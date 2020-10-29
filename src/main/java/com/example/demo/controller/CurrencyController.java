@@ -21,7 +21,7 @@ public class CurrencyController {
         return "home";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String getIndex(Model model) {
         return "pickDate";
     }
