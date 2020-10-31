@@ -1,25 +1,43 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Datepicker - Default functionality</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                format:'yyyy-mm-dd'
-            });
-        } );
-    </script>
+    <title>Bootstrap</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.datetimepicker.min.css" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
 </head>
 <body>
+<form th:action="@{/historicalTime}" method="post">
+    <div class="context-text">
+        <h1><label>ilość kasy w dolarach $$$</label></h1>
+        <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
+               th:name="investedMoney">
+        <h1><label>Wybierz dzień mordo z przeszłości i policz ile przejebałeś!!!</label></h1>
+        <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"
+               type="text"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<p>Date: <input type="text" id="datepicker"></p>
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-
+        <script>
+            $(document).ready(function () {
+                var date_input = $('input[name="date"]'); //our date input has the name "date"
+                var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+                date_input.datepicker({
+                    format: 'yyyy-mm-dd',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                })
+            })
+        </script>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>
 </body>
 </html>

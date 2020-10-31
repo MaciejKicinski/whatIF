@@ -16,19 +16,14 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/home")
-    public String getHome(Model model) {
-        return "home";
-    }
-
     @GetMapping("/")
     public String getAnything(Model model) {
-        return "home";
+        return "home3";
     }
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-        return "pickDate";
+        return "home3";
     }
 
 //2016-01-01T00:00:00
