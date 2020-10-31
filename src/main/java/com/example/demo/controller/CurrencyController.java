@@ -23,7 +23,7 @@ public class CurrencyController {
 
     @GetMapping("/")
     public String getAnything(Model model) {
-        return "pickDate";
+        return "home";
     }
 
     @GetMapping("/index")
