@@ -23,12 +23,12 @@ public class CurrencyController {
 
     @GetMapping("/")
     public String getAnything(Model model) {
-        return "homeEwe";
+        return "homeTest";
     }
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-        return "homeEwe";
+        return "homeTest";
     }
 
     @PostMapping("/historicalTime")
