@@ -16,22 +16,28 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
+    @GetMapping("/hometest")
+    public String getHomeTest(Model model) {
+        return "homeTest";
+    }
+
     @GetMapping("/")
     public String getAnything(Model model) {
-        return "home3";
+        return "homeEwe";
     }
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-        return "home3";
+        return "homeEwe";
     }
-
-//2016-01-01T00:00:00
 
     @PostMapping("/historicalTime")
     public String getHistoricalPriceOpen(@RequestParam String date, @RequestParam String investedMoney, Model model) {
+        System.out.println(investedMoney);
+        System.out.println(date);
         model.addAttribute("prize", currencyService.getCurrencyByTime(date));
         model.addAttribute("profit", currencyService.calculateProfit(date, investedMoney));
+        model.addAttribute("date", date);
         // String response = currencyService.getCurrencyByTime();
         // model.addAttribute("prize", response);
         return "result";

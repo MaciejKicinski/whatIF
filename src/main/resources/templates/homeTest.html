@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <script>
+        window.isMbscDemo = true;
+    </script>
+
+    <title>Mobile & Desktop usage</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+<form th:action="@{/historicalTime}" method="post">
+    <div mbsc-page class="demo-mobile-desktop-usage">
+        <div style="height:100%">
+
+            <div class="mbsc-grid mbsc-form-grid">
+                <div class="mbsc-row">
+                    <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                        <label>
+                            Mobile
+                            <input mbsc-input id="demo-mobile" data-input-style="box" placeholder="Please Select..."
+                                   th:name="date" th:value="*{date}"/>
+                        </label>
+                    </div>
+                    <div class="mbsc-col-sm-12 mbsc-col-md-6">
+
+                    </div>
+                </div>
+            </div>
+            <h1><label>ilość kasy w dolarach $$$</label></h1>
+            <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
+        </div>
+    </div>
+
+    <script>
+
+        mobiscroll.settings = {
+            lang: 'en',                // Specify language like: lang: 'pl' or omit setting to use default
+            theme: 'ios',              // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'  // More info about themeVariant: https://docs.mobiscroll.com/4-10-7/datetime#opt-themeVariant
+        };
+
+        $(function () {
+
+            // Mobiscroll Date & Time initialization
+            $('#demo-mobile').mobiscroll().date({
+                display: 'bubble',
+                format: 'Y-m-d',
+// Specify display mode like: display: 'bottom' or omit setting to use default
+            });
+
+            // Mobiscroll Date & Time initialization
+            $('#demo-desktop').mobiscroll().date({
+                display: 'bubble',     // Specify display mode like: display: 'bottom' or omit setting to use default
+                touchUi: false         // More info about touchUi: https://docs.mobiscroll.com/4-10-7/datetime#opt-touchUi
+            });
+
+        });
+    </script>
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+</body>
+</html>
