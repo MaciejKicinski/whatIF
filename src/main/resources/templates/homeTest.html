@@ -23,35 +23,51 @@
             height: 100%;
         }
 
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 
 </head>
 <body>
 <form th:action="@{/historicalTime}" method="post">
-    <div class="context-text">
-        <div mbsc-page class="demo-mobile-desktop-usage">
-            <div style="height:100%">
-
-                <div class="mbsc-grid mbsc-form-grid">
-                    <div class="mbsc-row">
-                        <div class="mbsc-col-sm-12 mbsc-col-md-6">
+    <div mbsc-form>
+        <div mbsc-form>
+            <div class="mbsc-grid">
+                <div class="mbsc-row mbsc-justify-content-center">
+                    <div class="mbsc-col-sm-9 mbsc-col-md-7 mbsc-col-xl-5">
+                        <div class="mbsc-form-group-inset">
+                            <div class="mbsc-form-group-title"></div>
+                            wybierz date z przeszłości, w ktorej chcialbys zainwestwowac $$$$$
                             <label>
-                                Mobile
+                                wybierz date
                                 <input mbsc-input id="demo-mobile" data-input-style="box" placeholder="Please Select..."
                                        th:name="date" th:value="*{date}">
                             </label>
-                        </div>
-                        <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                            wpisz ilosc dolarow
+
+                            <label>
+                                wpisz ilosc dolarow
+                                <input mbsc-input type="text" th:value="${investedMoney}" id="name"
+                                       th:name="investedMoney" placeholder="$$$$$$$$" width="500px">
+                            </label>
                         </div>
                     </div>
                 </div>
-                <h1><label>ilość kasy w dolarach $$$</label></h1>
-                <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
-                       th:name="investedMoney">
+
             </div>
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <div mbsc-form>
+        <div class="mbsc-form-group">
+            <div class="mbsc-btn-group-block">
+                <button mbsc-button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         mobiscroll.settings = {
             lang: 'en',                // Specify language like: lang: 'pl' or omit setting to use default
