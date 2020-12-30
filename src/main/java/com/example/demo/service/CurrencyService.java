@@ -76,7 +76,7 @@ public class CurrencyService {
             System.out.println("amountOfBitcoin: " + amountOfBitcoin);
             double valueOfYourBitcoin = amountOfBitcoin * latestPrize;
             System.out.println("valueOfYourBitcoin: " + valueOfYourBitcoin);
-            double profit = valueOfYourBitcoin - money;
+            double profit = valueOfYourBitcoin + money;
             System.out.println("profit: " + profit);
             DecimalFormat df = new DecimalFormat("#.##");
             double parsedProfit = Double.parseDouble(df.format(profit));

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <script>
+        window.isMbscDemo = true;
+    </script>
+    <title>Mobile & Desktop usage</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+<body>
+<form th:action="@{/historicalTime}" method="post">
+    <div mbsc-form>
+        <div mbsc-form>
+            <div class="mbsc-grid">
+                <div class="mbsc-row mbsc-justify-content-center">
+                    <div class="mbsc-col-sm-9 mbsc-col-md-7 mbsc-col-xl-5">
+                        <div class="mbsc-form-group-inset">
+                            <div class="mbsc-form-group-title"></div>
+                            wybierz date z przeszłości, w ktorej chcialbys zainwestwowac $$$$$
+                            <label>
+                                wybierz date
+                                <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"
+                                       type="date"/>
+                            </label>
+                            wpisz ilosc dolarow
+
+                            <label>
+                                wpisz ilosc dolarow
+                                <input mbsc-input type="text" th:value="${investedMoney}" id="name"
+                                       th:name="investedMoney" placeholder="$$$$$$$$" width="500px">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div mbsc-form>
+        <div class="mbsc-form-group">
+            <div class="mbsc-btn-group-block">
+                <button mbsc-button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mobiscroll.settings = {
+            lang: 'en',                // Specify language like: lang: 'pl' or omit setting to use default
+            theme: 'ios',              // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'  // More info about themeVariant: https://docs.mobiscroll.com/4-10-7/datetime#opt-themeVariant
+        };
+
+        $(function () {
+            // Mobiscroll Date & Time initialization
+            $('#demo-mobile').mobiscroll().date({
+                min: '2009-10-05',
+                max: '2020-11-02',
+                display: 'bubble',
+                dateFormat: 'yy-mm-dd'
+// Specify display mode like: display: 'bottom' or omit setting to use default
+            });
+            // Mobiscroll Date & Time initialization
+            $('#demo-desktop').mobiscroll().date({
+                display: 'bubble',     // Specify display mode like: display: 'bottom' or omit setting to use default
+                touchUi: false         // More info about touchUi: https://docs.mobiscroll.com/4-10-7/datetime#opt-touchUi
+            });
+        });
+    </script>
+
+</form>
+</body>
+</html>

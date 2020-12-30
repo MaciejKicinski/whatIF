@@ -1,5 +1,4 @@
 package com.example.demo.controller;
-
 import com.example.demo.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,19 +15,21 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
+    String testIndex = "homeMark1";
+
     @GetMapping("/hometest")
     public String getHomeTest(Model model) {
-        return "homeTest";
+        return testIndex;
     }
 
     @GetMapping("/")
     public String getAnything(Model model) {
-        return "homeTest";
+        return testIndex;
     }
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-        return "homeTest";
+        return testIndex;
     }
 
     @PostMapping("/historicalTime")
