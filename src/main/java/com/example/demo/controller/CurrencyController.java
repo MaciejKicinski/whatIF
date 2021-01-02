@@ -18,7 +18,7 @@ public class CurrencyController {
 
     @GetMapping("/home2")
     public String getHomeTest() {
-        return "home2";
+        return "home";
     }
 
     @GetMapping("/")

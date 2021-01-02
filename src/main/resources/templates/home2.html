@@ -9,10 +9,17 @@
     <script type="text/javascript" src="js/zepto-1.1.6-Custom.min.js"></script>
     <script type="text/javascript" src="js/DateTimePicker-zepto.js"></script>
     <script type="text/javascript" src="js/DateTimePicker-i18n.js"></script>
-
-
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtBox").DateTimePicker({
+                defaultDate: new Date(2009, 10, 1),
+                dateFormat: "yyyy-MM-dd",
+                minDate: "2009-10-01",
+            });
+        });
+    </script>
 </head>
+
 <body>
 <form th:action="@{/historicalTime}" method="post">
     <div class="context-text">
@@ -41,15 +48,6 @@
 <!--<p>DateTime : </p>-->
 <!--<input type="text" data-field="datetime" data-format="yyyy-MM-dd hh:mm:ss AA" readonly>-->
 <div id="dtBox"></div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#dtBox").DateTimePicker({
-            defaultDate: new Date(2009, 10, 1),
-            dateFormat: "yyyy-MM-dd",
-            minDate: "2009-10-01",
-        });
-    });
 
-</script>
 </body>
 </html>
