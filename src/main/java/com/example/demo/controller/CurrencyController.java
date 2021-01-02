@@ -16,9 +16,9 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/home2")
     public String getHomeTest() {
-        return "homeBS";
+        return "home2";
     }
 
     @GetMapping("/")
