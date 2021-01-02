@@ -23,7 +23,7 @@ public class CurrencyController {
 
     @GetMapping("/")
     public String getAnything() {
-        return "homeBS";
+        return "home2";
     }
 
     @PostMapping("/historicalTime")
