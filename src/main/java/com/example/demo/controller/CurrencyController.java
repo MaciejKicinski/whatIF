@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+
 import com.example.demo.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,21 +16,14 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    String testIndex = "homeMark1";
-
-    @GetMapping("/hometest")
-    public String getHomeTest(Model model) {
-        return testIndex;
+    @GetMapping("/home")
+    public String getHomeTest() {
+        return "homeBS";
     }
 
     @GetMapping("/")
-    public String getAnything(Model model) {
-        return testIndex;
-    }
-
-    @GetMapping("/index")
-    public String getIndex(Model model) {
-        return testIndex;
+    public String getAnything() {
+        return "homeBS";
     }
 
     @PostMapping("/historicalTime")
@@ -39,8 +33,6 @@ public class CurrencyController {
         model.addAttribute("prize", currencyService.getCurrencyByTime(date));
         model.addAttribute("profit", currencyService.calculateProfit(date, investedMoney));
         model.addAttribute("date", date);
-        // String response = currencyService.getCurrencyByTime();
-        // model.addAttribute("prize", response);
         return "result";
     }
 }

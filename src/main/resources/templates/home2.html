@@ -1,73 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+
 <head>
-    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
-    <!--Font Awesome (added because you use icons in your prepend/append)-->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
-    <link th:href="@{css/style.css}" rel="stylesheet">
+    <title>Example - Zepto</title>
+    <link rel="stylesheet" type="text/css" href="css/DateTimePicker.css"/>
+    <script type="text/javascript" src="js/zepto-1.1.6-Custom.min.js"></script>
+    <script type="text/javascript" src="js/DateTimePicker-zepto.js"></script>
+    <script type="text/javascript" src="DateTimePicker-i18n.js"></script>
 
-    <!-- Inline CSS based on choices in "Settings" tab -->
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
-        font-family: Arial, Helvetica, sans-serif;
-        color: black
-    }
+    <style>
+        p {
+            margin-left: 20px;
+        }
 
-    .bootstrap-iso form button, .bootstrap-iso form button:hover {
-        color: white !important;
-    }
+        input {
+            width: 200px;
+            padding: 10px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 
-    .asteriskField {
-        color: red;
-    }</style>
 </head>
 <body>
-<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
-<div class="bootstrap-iso">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <form th:action="@{/historicalTime}" class="form-horizontal" method="post">
-                    <div class="form-group ">
-                        <label class="control-label col-sm-2 requiredField" for="date">
+<form th:action="@{/historicalTime}" method="post">
+    <div class="context-text">
+        <div class="col-sm-3 col-md-6 col-lg-8 col-xl-12">
+            <h1><label>ilość kasy w dolarach $$$</label></h1>
+            <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
+                   th:name="investedMoney">
+            <h1><label>Wybierz dzień mordo z przeszłości i policz ile przejebałeś!!!</label></h1>
 
-                        </label>
-                        <div class="context-text">
-                            <h1><label>ilość kasy w dolarach $$$</label></h1>
-                            <input class="form-control" type="text" th:value="${investedMoney}"
-                                   id="investedMoney"
-                                   th:name="investedMoney">
-                            <h1><label>Wybierz dzień mordo z przeszłości i policz ile przejebałeś!!!</label>
-                            </h1>
-                            <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"
-                                   type="text"/>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                                <button class="btn btn-primary " name="submit" type="submit">
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+            <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"
+                   type="date"/>
 
-                    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-                    <!-- Include jQuery -->
-                    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-                    <!-- Include Date Range Picker -->
-                    <script type="text/javascript"
-                            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-                    <link rel="stylesheet"
-                          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-                    <script>
-
-                    </script>
-                </form>
-            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
     </div>
-</div>
+</form>
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Date Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<p>Date : </p>-->
+<!--<input type="text" data-field="date" data-format="yyyy-MM-dd" readonly>-->
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Time Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<p>Time : </p>-->
+<!--<input type="text" data-field="time" data-format="hh:mm AA" readonly>-->
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; DateTime Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<p>DateTime : </p>-->
+<!--<input type="text" data-field="datetime" data-format="yyyy-MM-dd hh:mm:ss AA" readonly>-->
+
+<div id="dtBox"></div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#dtBox").DateTimePicker({
+            defaultDate: new Date(2009, 10, 1),
+            dateFormat: "yyyy-MM-dd",
+            minDate: "2009-10-01",
+        });
+    });
+
+</script>
 </body>
 </html>
