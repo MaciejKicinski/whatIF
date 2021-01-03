@@ -16,14 +16,14 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/home2")
+    @GetMapping("/home")
     public String getHomeTest() {
-        return "home2";
+        return "homeBS";
     }
 
     @GetMapping("/")
     public String getAnything() {
-        return "homebs";
+        return "homeBS";
     }
 
     @PostMapping("/historicalTime")
