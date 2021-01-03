@@ -18,12 +18,12 @@ public class CurrencyController {
 
     @GetMapping("/home2")
     public String getHomeTest() {
-        return "home";
+        return "home2";
     }
 
     @GetMapping("/")
     public String getAnything() {
-        return "homeBS";
+        return "homebs";
     }
 
     @PostMapping("/historicalTime")

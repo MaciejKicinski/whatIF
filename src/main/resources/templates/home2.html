@@ -7,13 +7,14 @@
     <title>Example - Zepto</title>
     <link rel="stylesheet" type="text/css" href="css/DateTimePicker.css"/>
     <script type="text/javascript" src="js/DateTimePicker.js"></script>
+    <script type="text/javascript" src="js/DateTimePicker-i18n.js"></script>
     <script type="text/javascript" src="js/zepto-1.1.6-Custom.min.js"></script>
     <script type="text/javascript" src="js/DateTimePicker-zepto.js"></script>
-    <!--    <script type="text/javascript" src="js/DateTimePicker-i18n.js"></script>-->
 </head>
 
 <body>
 <form th:action="@{/historicalTime}" method="post">
+
     <div class="col-sm-3 col-md-6 col-lg-8 col-xl-12">
         <h1><label>ilość kasy w dolarach $$$</label></h1>
         <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
@@ -24,18 +25,6 @@
         <button class="btn btn-primary" type="submit">Submit</button>
     </div>
 </form>
-<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Date Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--<p>Date : </p>-->
-<!--<input type="text" data-field="date" data-format="yyyy-MM-dd" readonly>-->
-
-<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Time Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--<p>Time : </p>-->
-<!--<input type="text" data-field="time" data-format="hh:mm AA" readonly>-->
-
-<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; DateTime Picker &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--<p>DateTime : </p>-->
-<!--<input type="text" data-field="datetime" data-format="yyyy-MM-dd hh:mm:ss AA" readonly>-->
-
 <div id="dtBox"></div>
 <script type="text/javascript">
     $(document).ready(function () {
