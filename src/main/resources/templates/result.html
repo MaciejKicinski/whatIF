@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:http="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
-<div class="context-text">
-    <h1><label>Dnia:</label></h1>
-    <h1><p class="label-wide" th:text="${date}">historical date</p></h1>
-    <h1><label>Po tyle chodził BitCoin:</label></h1>
-    <h1><p class="label-wide" th:text="${prize}+'$'">Currency prize, historical prize</p></h1>
-    <h1><label>tyle masz $ w bitcoin</label></h1>
-    <h1><p class="label-wide" th:text="${profit}+'$'" >your profit</p></label></h1>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <div class="context-text">
+        <h1><label>Dnia:</label></h1>
+        <h1><p class="label-wide" th:text="${date}">historical date</p></h1>
+        <h1><label>Po tyle chodził BitCoin:</label></h1>
+        <h1><p class="label-wide" th:text="${prize}+'$'">Currency prize, historical prize</p></h1>
+        <h1><label>tyle masz $ w bitcoin</label></h1>
+        <h1><p class="label-wide" th:text="${profit}+'$'">your profit</p></label></h1>
+    </div>
+
+<!--<div class="carousel">-->
+<!--    &lt;!&ndash;<div id="carousel">&ndash;&gt;-->
+
+<!--    <div class="context-text">-->
+<!--        <h1><label>Dnia:</label></h1>-->
+<!--        <h1><p class="label-wide" th:text="${date}">historical date</p></h1>-->
+<!--        <h1><label>Po tyle chodził BitCoin:</label></h1>-->
+<!--        <h1><p class="label-wide" th:text="${prize}+'$'">Currency prize, historical prize</p></h1>-->
+<!--        <h1><label>tyle masz $ w bitcoin</label></h1>-->
+<!--        <h1><p class="label-wide" th:text="${profit}+'$'">your profit</p></label></h1>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--</div>-->
 </body>
 </html>

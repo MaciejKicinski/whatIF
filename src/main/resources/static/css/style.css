@@ -1,6 +1,26 @@
-body {
-    background-color: rgb(29, 1, 42);
+*{
+    margin: 0;
+    padding: 0;
 }
+
+body{
+    box-sizing: border-box;
+    background-image: url('https://media.giphy.com/media/blqEBWV6iFjGM/giphy.gif');
+    background-size:250px;
+    background-repeat: repeat;
+}
+
+/*#carousel  {*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    !*width: 1500px;*!*/
+/*    height: 100vh;*/
+/*    left: 10px;*/
+/*    top: 10px;*/
+/*    background: url('https://media.giphy.com/media/blqEBWV6iFjGM/giphy.gif') repeat center center fixed;*/
+/*    overflow: hidden;*/
+/*    border: solid 1px black;*/
+/*}*/
 
 .context-text {
     text-align: center;
