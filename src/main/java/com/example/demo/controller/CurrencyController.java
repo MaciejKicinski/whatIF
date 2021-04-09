@@ -31,7 +31,14 @@ public class CurrencyController {
     }
 
     @GetMapping("home")
-    public ModelAndView getAnything() {
+    public ModelAndView getHome() {
+        ModelAndView mnw = new ModelAndView("home");
+        mnw.addObject("newCalculation", new NewCalculationForm());
+        return mnw;
+    }
+
+    @GetMapping
+    public ModelAndView get() {
         ModelAndView mnw = new ModelAndView("home");
         mnw.addObject("newCalculation", new NewCalculationForm());
         return mnw;
@@ -49,7 +56,7 @@ public class CurrencyController {
 
     @PostMapping(value = "historicalTime")
     public String getHistoricalPriceOpen(@ModelAttribute("newCalculation") @Validated NewCalculationForm form,
-                                          BindingResult bindingResult, Model model) {
+                                         BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "/home";
         }
