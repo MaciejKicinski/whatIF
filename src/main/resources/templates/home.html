@@ -1,42 +1,154 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/jquery.datetimepicker.min.css" rel="stylesheet">
-    <link th:href="@{css/style.css}" rel="stylesheet">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript"
-            src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-    <link rel="stylesheet"
-          href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.css"/>
-    <script>
-        $(document).ready(function () {
-            var date_input = $('input[name="date"]'); //our date input has the name "date"
-            date_input.datepicker({
-                orientation: 'bottom',
-                format: 'yyyy-mm-dd',
-            })
-        })
-    </script>
-</head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Satoshi Nakamoto calculator</title>
+    <!--    Favicon-->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+          rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet"/>
 
-<body>
-<form th:action="@{/historicalTime}" method="post">
-    <div class="context-text">
-        <div class="col-sm-3 col-md-6 col-lg-8 col-xl-12">
-            <h1><label>ilość kasy w dolarach $$$</label></h1>
-            <input class="form-control" type="text" th:value="${investedMoney}" id="investedMoney"
-                   th:name="investedMoney">
-            <h1><label>Wybierz dzień mordo z przeszłości i policz ile przejebałeś!!!</label></h1>
-            <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"
-                   type="date"/>
-            <button class="btn btn-primary" type="submit">Submit</button>
+</head>
+<body id="page-top">
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Kalkulator</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+            </ul>
         </div>
     </div>
-</form>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <h1 class="text-uppercase text-white font-weight-bold">Jedyna strona o krypto której potrzebujesz</h1>
+                <hr class="divider my-4"/>
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 font-weight-light mb-5">Dzięki tej stronie dowiesz się ile straciłeś<br>
+                    nie inwestująć w BitCoina np. w 2010 roku.</p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Kliknij tutaj!</a>
+                <hr class="divider my-4"/>
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">przejdź prosto do kalkulatora</a>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About-->
+<section class="page-section bg-primary" id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">Instrukcja</h2>
+                <hr class="divider light my-4"/>
+                <p class="text-white-50 mb-4">Wyobraź sobie, że cofnąłeś się w czasie i chcesz kupić troche krypot,
+                    wybierz poniżej dzień do którego się cofamy i ile inwestujemy dolarów $</p>
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Zaczynajmy</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <form th:action="@{/historicalTime}" method="post" th:object="${newCalculation}">
+                <div class="context-text">
+                    <div class="col-sm-3 col-md-6 col-lg-8 col-xl-12">
+                        <h2 class="text-center mt-0 mb-3">Podaj ilość dolarów, którą chcesz zainwestować</h2>
+
+                        <input class="form-control mb-3" th:type="text" th:field="*{investedMoney}"/>
+
+                        <div th:if="${#fields.hasErrors('investedMoney')}" th:errors="*{investedMoney}">Name Error</div>
+                        <h2 class="text-center mt-0 mb-3">Wybierz date z przeszłości (yyyy-mm-dd)</h2>
+
+                        <input class="form-control mb-3" id="date" name="date"
+                               th:type="date" th:field="*{date}" th:placeholder="yyyy-mm-dd"/>
+
+                        <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Name Error</div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Contact-->
+<section class="page-section bg-primary" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">Let's Get In Touch!</h2>
+                <hr class="divider my-4"/>
+                <p class="text-white mb-5">Tell us what you think.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                <div>+1 (555) 123-bitcoin</div>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                <a class="d-block" href="mailto:satoshinakamoto@bitcoin.com">satoshinakamoto@bitcoin.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">WAKANDA FOREVER</div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--&lt;!&ndash; Third party plugin JS&ndash;&gt;-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<!--&lt;!&ndash; Core theme JS&ndash;&gt;-->
+<script src="js/scripts.js"></script>
+
+<div id="dtBox"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#dtBox").DateTimePicker({
+            defaultDate: new Date(2009, 10, 1),
+            dateFormat: "yyyy-MM-dd",
+            minDate: "2009-10-01",
+        });
+    });
+</script>
 </body>
 </html>

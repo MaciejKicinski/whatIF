@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:http="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:ht="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/style.css">
-
+    <title>Satoshi Nakamoto calculator</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+          rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet"/>
 </head>
+
 <body>
+<style>
+    body {
+        box-sizing: border-box;
+        background-image: url('https://media.giphy.com/media/blqEBWV6iFjGM/giphy.gif');
+        background-size: 250px;
+        background-repeat: repeat;
+    }
+
+    h2 label {
+        background-color: white;
+    }
+
+    h2 p {
+        background-color: white;
+    }
+</style>
+<div class="row h-100 align-items-center justify-content-center text-center">
     <div class="context-text">
-        <h1><label>Dnia:</label></h1>
-        <h1><p class="label-wide" th:text="${date}">historical date</p></h1>
-        <h1><label>Po tyle chodził BitCoin:</label></h1>
-        <h1><p class="label-wide" th:text="${prize}+'$'">Currency prize, historical prize</p></h1>
-        <h1><label>tyle masz $ w bitcoin</label></h1>
-        <h1><p class="label-wide" th:text="${profit}+'$'">your profit</p></label></h1>
+        <div class="col-sm-3 col-md-6 col-lg-8 col-xl-12">
+            <h2 class="text-center mt-0 mb-3"><label>Dnia:</label></h2>
+            <h2 class="text-center mt-0 mb-3"><p class="label-wide" th:text="${date}">historical date</p></h2>
+            <h2 class="text-center mt-0 mb-3"><label>Po tyle chodził BitCoin:</label></h2>
+            <h2 class="text-center mt-0 mb-3"><p class="label-wide" th:text="${prize}+'$'">Currency prize,
+                historical
+                prize</p></h2>
+            <h2 class="text-center mt-0 mb-3"><label>tyle masz $ w bitcoin</label></h2>
+            <h2 class="text-center mt-0 mb-3"><p class="label-wide" th:text="${profit}+'$'">your
+                profit</p></label>
+            </h2>
+            <a href="home#services" class="btn btn-primary"> Back </a>
+        </div>
     </div>
+</div>
 
-<!--<div class="carousel">-->
-<!--    &lt;!&ndash;<div id="carousel">&ndash;&gt;-->
 
-<!--    <div class="context-text">-->
-<!--        <h1><label>Dnia:</label></h1>-->
-<!--        <h1><p class="label-wide" th:text="${date}">historical date</p></h1>-->
-<!--        <h1><label>Po tyle chodził BitCoin:</label></h1>-->
-<!--        <h1><p class="label-wide" th:text="${prize}+'$'">Currency prize, historical prize</p></h1>-->
-<!--        <h1><label>tyle masz $ w bitcoin</label></h1>-->
-<!--        <h1><p class="label-wide" th:text="${profit}+'$'">your profit</p></label></h1>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;</div>&ndash;&gt;-->
-
-<!--</div>-->
 </body>
 </html>

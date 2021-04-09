@@ -4,8 +4,8 @@ import com.example.demo.entity.CryptoCurrencyEntity;
 import com.example.demo.entity.RequestParameters;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
@@ -14,8 +14,8 @@ import java.text.DecimalFormat;
 public class CurrencyService {
     //https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/history?period_id=1sec&time_start=2016-01-01T00:00:00&limit=1&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD
     private static final String API_URL = "https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD";
-    //  private static final String API_KEY = "&apikey=00F2E1CD-67A4-48AA-B0E5-95C5628058FF";
-    private static final String API_KEY = "&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD";
+      private static final String API_KEY = "&apikey=00F2E1CD-67A4-48AA-B0E5-95C5628058FF";
+   // private static final String API_KEY = "&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD";
 
     // https://rest.coinapi.io/v1/ohlcv/BTC/USD/latest?period_id=1MIN&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD
     public static RequestParameters getRequestParameters(String date) {
@@ -66,8 +66,8 @@ public class CurrencyService {
         return result.toString();
     }
 
-    public String calculateProfit(String date, String investedMoney) {
-        double money = Double.parseDouble(investedMoney);
+    public String calculateProfit(String date, BigDecimal investedMoney) {
+        double money = investedMoney.doubleValue();
         double pastPrize = Double.parseDouble(getCurrencyByTime(date));
         StringBuilder result = new StringBuilder();
         try {

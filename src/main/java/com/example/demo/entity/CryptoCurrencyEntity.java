@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CryptoCurrencyEntity implements Serializable {
+public class CryptoCurrencyEntity {
     private Float price_open;
 
     public Float getPrice_open() {
