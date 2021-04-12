@@ -58,7 +58,7 @@ public class CurrencyController {
     public String getHistoricalPriceOpen(@ModelAttribute("newCalculation") @Validated NewCalculationForm form,
                                          BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "/home";
+            return "home";
         }
         model.addAttribute("prize", currencyService.getCurrencyByTime(form.getDate()));
         model.addAttribute("profit", currencyService.calculateProfit(form.getDate(), form.getInvestedMoney()));
