@@ -16,3 +16,8 @@ It's an app where you can check how much money you have lost because you didn't 
 ## Demo
 
 [HEROKU live demo](https://satoshinakamoto.herokuapp.com)
+
+## TODO
+
+-date range validation
+-date-time picker for safari
