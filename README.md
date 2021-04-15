@@ -19,5 +19,5 @@ It's an app where you can check how much money you have lost because you didn't 
 
 ## TODO
 
--date range validation
--date-time picker for safari
+* date range validation
+* date-time picker for safari
