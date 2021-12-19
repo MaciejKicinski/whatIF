@@ -3,6 +3,7 @@ package com.macdevelop.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.macdevelop.entity.CryptoCurrencyEntity;
 import com.macdevelop.entity.RequestParameters;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,10 @@ import java.net.URLConnection;
 import java.text.DecimalFormat;
 
 @Service
-
+@Slf4j
 public class CurrencyService {
 
-    private static final Logger log = LoggerFactory.getLogger(CurrencyService.class);
+    //private static final Logger log = LoggerFactory.getLogger(CurrencyService.class);
 
     //https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/history?period_id=1sec&time_start=2016-01-01T00:00:00&limit=1&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD
     private static final String API_URL = "https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD";
@@ -51,7 +52,7 @@ public class CurrencyService {
         url.append("time_start=").append(parameters.getTime_start()).append("&");
         url.append("limit=").append(parameters.getLimit());
         url.append(API_KEY);
-        System.out.println(url);
+        log.info(url.toString());
         return getJson(url);
     }
 
@@ -78,13 +79,13 @@ public class CurrencyService {
         double pastPrize = Double.parseDouble(getCurrencyByTime(date));
         StringBuilder result = new StringBuilder();
         double latestPrize = Double.parseDouble(getCurrency());
-        System.out.println("latestPrize: " + latestPrize);
+        log.info("latestPrize: " + latestPrize);
         double amountOfBitcoin = money / pastPrize;
-        System.out.println("amountOfBitcoin: " + amountOfBitcoin);
+        log.info("amountOfBitcoin: " + amountOfBitcoin);
         double valueOfYourBitcoin = amountOfBitcoin * latestPrize;
-        System.out.println("valueOfYourBitcoin: " + valueOfYourBitcoin);
+        log.info("valueOfYourBitcoin: " + valueOfYourBitcoin);
         double profit = valueOfYourBitcoin + money;
-        System.out.println("profit: " + profit);
+        log.info("profit: " + profit);
         DecimalFormat df = new DecimalFormat("#.##");
         double parsedProfit = Double.parseDouble(df.format(profit));
         result.append(parsedProfit);
