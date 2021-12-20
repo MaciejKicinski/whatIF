@@ -9,6 +9,4 @@ import lombok.ToString;
 @ToString
 public class RequestParameters {
     private String time_start;
-
-
 }

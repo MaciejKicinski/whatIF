@@ -2,7 +2,6 @@ package com.macdevelop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.macdevelop.entity.CryptoCurrencyEntity;
-import com.macdevelop.entity.RequestParameters;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +10,6 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 @Service
 @Slf4j
@@ -23,18 +20,11 @@ public class CurrencyService {
     // private static final String API_KEY = "&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD";
     private static final String API_ENDPOINT_FOR_LATEST_BTC_COURSE = "https://rest.coinapi.io/v1/ohlcv/BTC/USD/latest?period_id=1sec&limit=1";
 
-    public static RequestParameters getRequestParameters(String date) {
-        String dateTime = date + "T12:00:00";
-        RequestParameters requestParameters = new RequestParameters(); //period_id and limit are mocked
-        requestParameters.setTime_start(dateTime);
-        return requestParameters;
-    }
-
     public String getUrlWithTimeStart(String date) {
-        RequestParameters parameters = getRequestParameters(date);
+        String dateTime = date + "T12:00:00";
         StringBuilder url = new StringBuilder();
         url.append(API_URL);
-        url.append("&time_start=").append(parameters.getTime_start());
+        url.append("&time_start=").append(dateTime);
         url.append(API_KEY);
         log.debug(url.toString());
         return url.toString();
@@ -60,9 +50,9 @@ public class CurrencyService {
     }
 
     public String calculateProfit(String date, BigDecimal investedMoney) {
+        StringBuilder result = new StringBuilder();
         double money = investedMoney.doubleValue();
         double pastPrize = Double.parseDouble(getHistoricBtcCourse(date));
-        StringBuilder result = new StringBuilder();
         double latestPrize = Double.parseDouble(API_ENDPOINT_FOR_LATEST_BTC_COURSE);
         double profit = (money / pastPrize) * latestPrize + money;
         log.info("latestPrize: " + latestPrize + "\n" + "amountOfBitcoin: " + (money / pastPrize) + "\n" + "valueOfYourBitcoin: " + ((money / pastPrize) * latestPrize) + "\n" + "profit: " + profit);
