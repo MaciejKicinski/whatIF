@@ -47,9 +47,10 @@ public class CurrencyController {
         if (bindingResult.hasErrors()) {
             return "home";
         }
-        model.addAttribute("prize", currencyService.getCurrencyByTime(form.getDate()));
-        model.addAttribute("profit", currencyService.calculateProfit(form.getDate(), form.getInvestedMoney()));
-        model.addAttribute("date", form.getDate());
+        String date = form.getDate();
+        model.addAttribute("prize", currencyService.getHistoricBtcCourse(date));
+        model.addAttribute("profit", currencyService.calculateProfit(date, form.getInvestedMoney()));
+        model.addAttribute("date", date);
         return "result";
     }
 
