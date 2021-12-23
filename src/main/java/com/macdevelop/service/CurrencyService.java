@@ -3,6 +3,7 @@ package com.macdevelop.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.macdevelop.entity.CryptoCurrencyEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
@@ -20,40 +21,15 @@ public class CurrencyService {
     // private static final String API_KEY = "&apikey=6FF8A46F-A517-4F1E-923C-1130A8BEB9FD";
     private static final String API_ENDPOINT_FOR_LATEST_BTC_COURSE = "https://rest.coinapi.io/v1/ohlcv/BTC/USD/latest?period_id=1sec&limit=1";
 
-    public String getUrlWithTimeStart(String date) {
-        String dateTime = date + "T12:00:00";
-        StringBuilder url = new StringBuilder();
-        url.append(API_URL);
-        url.append("&time_start=").append(dateTime);
-        url.append(API_KEY);
-        log.debug(url.toString());
-        return url.toString();
-    }
-
-    public String getHistoricBtcCourse(String date) {
-        String url = getUrlWithTimeStart(date);
-        StringBuilder result = new StringBuilder();
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            URLConnection openConnection = new URL(url).openConnection();
-            openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-            InputStream inputStream = openConnection.getInputStream();
-            CryptoCurrencyEntity[] coinByTime;
-            coinByTime = mapper.readValue(inputStream, CryptoCurrencyEntity[].class);
-            result.append(coinByTime[0].getPrice_open());
-            return result.toString();
-        } catch (Exception exception) {
-            log.error(exception.toString());
-        }
-        result.append("error");
-        return result.toString();
-    }
+    @Autowired
+    CoinApiClient coinApiClient;
 
     public String calculateProfit(String date, BigDecimal investedMoney) {
         StringBuilder result = new StringBuilder();
         double money = investedMoney.doubleValue();
-        double pastPrize = Double.parseDouble(getHistoricBtcCourse(date));
-        double latestPrize = Double.parseDouble(API_ENDPOINT_FOR_LATEST_BTC_COURSE);
+        // Fixme hardcoded base and quote id
+        double pastPrize = coinApiClient.getExchangeRateAtSpecificTime("BTC","USD",date).getRate();
+        double latestPrize = coinApiClient.getExchangeRate("BTC","USD").getRate();
         double profit = (money / pastPrize) * latestPrize + money;
         log.info("latestPrize: " + latestPrize + "\n" + "amountOfBitcoin: " + (money / pastPrize) + "\n" + "valueOfYourBitcoin: " + ((money / pastPrize) * latestPrize) + "\n" + "profit: " + profit);
         DecimalFormat df = new DecimalFormat("#.##");

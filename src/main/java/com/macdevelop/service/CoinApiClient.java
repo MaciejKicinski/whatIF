@@ -27,11 +27,19 @@ public class CoinApiClient {
                 .build();
     }
 
-    public Mono<ApicoinRequest> getExchangeRate(String assetIdBase, String assetIdQuote) {
+    public ApicoinRequest getExchangeRate(String assetIdBase, String assetIdQuote) {
         return webClient.get()
                 .uri("exchangerate/{assetIdBase}/{assetIdQuote}", assetIdBase, assetIdQuote)
                 .retrieve()
-                .bodyToMono(ApicoinRequest.class);
+                .bodyToMono(ApicoinRequest.class)
+                .block();
     }
 
+    public ApicoinRequest getExchangeRateAtSpecificTime(String assetIdBase, String assetIdQuote, String date) {
+        return webClient.get()
+                .uri("exchangerate/{assetIdBase}/{assetIdQuote}?time={date}T12:00:00", assetIdBase, assetIdQuote, date)
+                .retrieve()
+                .bodyToMono(ApicoinRequest.class)
+                .block();
+    }
 }
