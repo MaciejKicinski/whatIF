@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @Controller
 @RequestMapping("/")
-public class ApicoinClientRestController {
+public class ApicoinClientController {
 
     @Autowired
     private CurrencyService currencyService;

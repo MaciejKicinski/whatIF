@@ -1,4 +1,4 @@
-package com.macdevelop.entity;
+package com.macdevelop.payload;
 
 import lombok.Getter;
 import lombok.Setter;
