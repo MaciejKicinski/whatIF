@@ -1,6 +1,7 @@
 package com.macdevelop.controller;
 
 import com.macdevelop.form.NewCalculationForm;
+import com.macdevelop.payload.CalculationResponse;
 import com.macdevelop.service.CoinApiClient;
 import com.macdevelop.service.CurrencyService;
 import com.macdevelop.validator.NewCalculationFormValidator;
@@ -24,7 +25,7 @@ public class ApicoinClientRestController {
     @Autowired
     private NewCalculationFormValidator validator;
     @Autowired
-    CoinApiClient coinApiClient;
+    private CoinApiClient coinApiClient;
 
     @InitBinder
     public void init(WebDataBinder binder) {
@@ -45,16 +46,16 @@ public class ApicoinClientRestController {
         return mnw;
     }
 
-    @PostMapping(value = "historicalTime")
+    @PostMapping(value = "result")
     public String getHistoricalPriceOpen(@ModelAttribute("newCalculation") @Validated NewCalculationForm form,
                                          BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "home";
         }
         String date = form.getDate();
-        //Fixme
-        model.addAttribute("prize", currencyService.getHistoricBtcCourse(date));
-        model.addAttribute("profit", currencyService.calculateProfit(date, form.getInvestedMoney()));
+        CalculationResponse calculationResponse = currencyService.calculateProfit(date, form.getInvestedMoney());
+        model.addAttribute("prize", calculationResponse.getHistoricalRate());
+        model.addAttribute("profit", calculationResponse.getProfit());
         model.addAttribute("date", date);
         return "result";
     }
