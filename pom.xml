@@ -43,11 +43,15 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
                 <configuration>
-                    <appName>toDo_api</appName>
+                    <appName>whatIF</appName>
                     <processTypes>
                         <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
                     </processTypes>
@@ -64,6 +68,8 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
+<!--Webapp runner is designed to allow you to launch an exploded or compressed war that is on your
+filesystem into a tomcat container with a simple java -jar command.-->
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.github.jsimone</groupId>
