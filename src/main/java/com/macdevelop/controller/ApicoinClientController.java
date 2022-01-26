@@ -54,7 +54,7 @@ public class ApicoinClientController {
         }
         String date = form.getDate();
         CalculationResponse calculationResponse = currencyService.calculateProfit(date, form.getInvestedMoney());
-        model.addAttribute("prize", calculationResponse.getHistoricalRate());
+        model.addAttribute("prize", String.format("%.2f",calculationResponse.getHistoricalRate()));
         model.addAttribute("profit", calculationResponse.getProfit());
         model.addAttribute("date", date);
         return "result";

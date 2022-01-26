@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 public class CurrencyService {
     @Autowired
     CoinApiClient coinApiClient;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     private final DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     String now = LocalDateTime.now().format(dtf);
@@ -31,9 +33,9 @@ public class CurrencyService {
         double money = investedMoney.doubleValue();
         double pastPrize = response.getHistoricalRate();
         double latestPrize = response.getLatestRate();
-        double profit = (money / pastPrize) * latestPrize + money;
+        double profit = (money / pastPrize) * latestPrize;
         log.info("latestPrize: " + latestPrize + "\n" + "amountOfBitcoin: " + (money / pastPrize) + "\n" + "valueOfYourBitcoin: " + ((money / pastPrize) * latestPrize) + "\n" + "profit: " + profit);
-        response.setProfit(profit);
+        response.setProfit(String.format("%.2f", profit));
         return response;
     }
 }

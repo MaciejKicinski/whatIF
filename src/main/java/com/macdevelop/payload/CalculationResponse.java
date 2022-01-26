@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CalculationResponse {
     private double latestRate;
-    private double profit;
+    private String profit;
     private double historicalRate;
 
 }
