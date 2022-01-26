@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="whatIF" target="8" />
+      <module name="whatIF" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
