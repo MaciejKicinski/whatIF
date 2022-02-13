@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
+
 @Service
 @Slf4j
 public class CoinApiClient {
@@ -19,7 +21,7 @@ public class CoinApiClient {
     @Autowired
     RestTemplate restTemplate;
 
-    public ApicoinRequest getExchangeRate(String assetIdBase, String assetIdQuote, String date) {
+    public ApicoinRequest getExchangeRate(String assetIdBase, String assetIdQuote, LocalDateTime date) {
         ResponseEntity<ApicoinRequest> response = restTemplate.exchange(
                 APICOIN_BASE_URL + "exchangerate/{assetIdBase}/{assetIdQuote}?time={date}",
                 HttpMethod.GET,

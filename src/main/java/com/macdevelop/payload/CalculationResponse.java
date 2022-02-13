@@ -2,10 +2,12 @@ package com.macdevelop.payload;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class CalculationResponse {
     private double latestRate;
-    private String profit;
+    private double profit;
     private double historicalRate;
-
+    private LocalDateTime date;
 }
